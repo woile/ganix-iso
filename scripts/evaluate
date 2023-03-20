@@ -1,0 +1,3 @@
+#!/bin/sh
+
+nix-instantiate --eval --strict --impure loader/from_envs.nix
