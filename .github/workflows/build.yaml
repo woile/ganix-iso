@@ -57,7 +57,7 @@ env:
   INPUT_WIFI_NETWORK_PSK: ${{ github.event.inputs.wifi_network_psk }}
 
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

@@ -9,7 +9,7 @@ in
       users = {
         "${ganix.username}" = {
           isNormalUser = true;
-          extraGroups = [ "wheel" "networkmanager" ];
+          extraGroups = [ "wheel" "networkmanager" "docker" "podman" ];
           openssh.authorizedKeys.keys = lib.mapAttrsToList (k: v: builtins.readFile "${../authorized_keys}/${k}") ssh_pub_files;
         };
       };

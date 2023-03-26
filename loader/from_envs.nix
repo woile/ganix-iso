@@ -2,7 +2,8 @@ let
   pkgs = import <nixpkgs> {};
   ganix = import ../ganix.nix;
   getOrElse = x: d: if x == "" then d else x;
-  getOrElseNull = x: d: if x == null then d else x;
+  getIfNotNullElse = x: d: if x == null then d else x;
+  parseBool = val: if val == "true" then true else false;
 
   # variables
   hostname_env = builtins.getEnv "INPUT_HOSTNAME";
@@ -31,7 +32,7 @@ let
 
   wifi_enabled_env = builtins.getEnv "INPUT_WIFI_ENABLED";
   wifi_enabled_default = true;
-  wifi_enabled = wifi_enabled_default; # TODO: convert str to bool
+  wifi_enabled = getOrElse (parseBool wifi_enabled_env) wifi_enabled_default;
 
   wifi_network_name_env = builtins.getEnv "INPUT_WIFI_NETWORK_NAME";
   wifi_network_name_default = "";
@@ -42,13 +43,13 @@ let
   wifi_network_psk = getOrElse wifi_network_psk_env wifi_network_psk_default;
 
  in {
-  hostname = getOrElseNull ganix.hostname hostname;
-  username = getOrElseNull ganix.username username;
-  timezone = getOrElseNull ganix.timezone timezone;
-  raspberry_model = getOrElseNull ganix.raspberry_model raspberry_model;
-  ssh_key_name = getOrElseNull ganix.ssh_key_name ssh_key_name;
-  ssh_key = getOrElseNull ganix.ssh_key ssh_key;
-  wifi_enabled = getOrElseNull ganix.wifi_enabled wifi_enabled;
-  wifi_network_name = getOrElseNull ganix.wifi_network_name wifi_network_name;
-  wifi_network_psk = getOrElseNull ganix.wifi_network_psk wifi_network_psk;
+  hostname = getIfNotNullElse ganix.hostname hostname;
+  username = getIfNotNullElse ganix.username username;
+  timezone = getIfNotNullElse ganix.timezone timezone;
+  raspberry_model = getIfNotNullElse ganix.raspberry_model raspberry_model;
+  ssh_key_name = getIfNotNullElse ganix.ssh_key_name ssh_key_name;
+  ssh_key = getIfNotNullElse ganix.ssh_key ssh_key;
+  wifi_enabled = getIfNotNullElse ganix.wifi_enabled wifi_enabled;
+  wifi_network_name = getIfNotNullElse ganix.wifi_network_name wifi_network_name;
+  wifi_network_psk = getIfNotNullElse ganix.wifi_network_psk wifi_network_psk;
  }

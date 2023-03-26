@@ -19,24 +19,24 @@
 
     # System packages
     environment.systemPackages = with pkgs; [
-      ntp
-      avahi
+      # ntp
       vim
       git
       wget
-      starship
+      # starship
       lm_sensors
       jq
-      docker-compose
-      bat # cat
-      exa # ls
-      ripgrep # grep
-      fd # find
-      procs # ps
-      sd # sed
-      du-dust # du
-      bandwhich
-      xh # http
+      # avahi
+      # docker-compose
+      # bat # cat
+      # exa # ls
+      # ripgrep # grep
+      # fd # find
+      # procs # ps
+      # sd # sed
+      # du-dust # du
+      # bandwhich
+      # xh # http
       macchina
     ];
 

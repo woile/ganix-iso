@@ -22,7 +22,8 @@ the env variables for the github action
 
 ## TODO
 
-- [ ] Design template system
+- [x] Design template system
+- [ ] Create flake derivation (?) to load SSH keys from env vars
 
 ## Development
 

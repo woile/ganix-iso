@@ -6,7 +6,7 @@
       openssh = {
         enable = true;
         openFirewall = true;
-        settings.PasswordAuthentication = false;
+        # settings.PasswordAuthentication = false;
       };
       transmission = {
         enable = false;
@@ -28,9 +28,9 @@
         enable = true;
       };
       bash.shellAliases = {
-        cat = "bat --style=plain -P";
-        ls = "exa --color=auto";
-        du = "dust -b";
+        # cat = "bat --style=plain -P";
+        # ls = "exa --color=auto";
+        # du = "dust -b";
         neofetch = "macchina";
       };
     };
