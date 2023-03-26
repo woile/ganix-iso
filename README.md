@@ -48,10 +48,10 @@ nix build
 3. Burn the ISO to the USB
 
 ```sh
-sudo dd if=result/nixos-sd-image-23.05.20221124.8e8b5f3-aarch64-linux.img of=/dev/disk2 bs=4096 conv=fsync status=progress
+sudo dd if=result/nixos-sd-image-23.05.20230326.0cd51a9-aarch64-linux.img of=/dev/disk2 bs=1m status=progress
 ```
 
 ```sh
 ISO_IMAGE="ISO_URL_HOSTED_ON_GITHUB"
-curl -L "$ISO_IMAGE" | sudo dd of=/dev/disk2 bs=4096 conv=fsync status=progress
+curl -L "$ISO_IMAGE" | sudo dd of=/dev/disk2 bs=1m status=progress
 ```
