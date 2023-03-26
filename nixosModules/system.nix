@@ -6,7 +6,7 @@
   ];
   config = {
     system = {
-      stateVersion = "22.11";
+      stateVersion = "23.05";
     };
 
     # Time
@@ -14,11 +14,12 @@
 
     # Man
     documentation = {
-      enable = true;
+      enable = false;
     };
 
     # System packages
     environment.systemPackages = with pkgs; [
+      libraspberrypi
       # ntp
       vim
       git
@@ -63,7 +64,14 @@
       hostName = ganix.hostname;
       useDHCP = true;
       firewall.enable = false;
-
+      interfaces.wlan0 = {
+        # useDHCP = false;
+        # ipv4.addresses = [{
+        #   # I used static IP over WLAN because I want to use it as local DNS resolver
+        #   address = "192.168.100.4";
+        #   prefixLength = 24;
+        # }];
+      };
       wireless = {
         enable = ganix.wifi_enabled;
         interfaces = [ "wlan0" ];
@@ -82,14 +90,32 @@
 
     sdImage.compressImage = false;
 
-    # NixOS wants to enable GRUB by default
-    boot.loader.grub.enable = false;
-    # Enables the generation of /boot/extlinux/extlinux.conf
-    # boot.loader.generic-extlinux-compatible.enable = true;
+    # boot.loader.grub.enable = false;
+    # # Enables the generation of /boot/extlinux/extlinux.conf
+    # # boot.loader.generic-extlinux-compatible = lib.mkDefault {enable = false; populateCmd = "";};
+    # # boot.loader.generic-extlinux-compatible.enable = lib.mkForce false;
+    # # boot.loader.generic-extlinux-compatible.populateCmd = lib.mkForce "";
+    # boot.loader.raspberryPi = {
+    #   enable = true;
+    #   version = ganix.raspberry_model;
+    # };
+    boot = {
+      kernelParams = ["cma=256M"];
 
-    boot.loader.raspberryPi = {
-      enable = true;
-      version = ganix.raspberry_model;
+      # !!! Otherwise (even if you have a Raspberry Pi 2 or 3), pick this:
+      # kernelPackages = pkgs.linux_rpi3;
+
+      # Cleanup tmp on startup
+      cleanTmpDir = true;
+
+      loader = {
+        # NixOS wants to enable GRUB by default
+        grub.enable = false;
+        # raspberryPi.enable = true;
+        raspberryPi.version = ganix.raspberry_model;
+        # generic-extlinux-compatible.enable = lib.mkForce false;
+        # generic-extlinux-compatible.populateCmd = lib.mkForce {};
+      };
     };
 
     i18n = {

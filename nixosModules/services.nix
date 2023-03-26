@@ -6,6 +6,7 @@
       openssh = {
         enable = true;
         openFirewall = true;
+        settings.PermitRootLogin = "yes";
         # settings.PasswordAuthentication = false;
       };
       transmission = {
