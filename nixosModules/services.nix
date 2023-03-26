@@ -19,7 +19,7 @@
         publish.addresses = true;
         publish.workstation = true;
       };
-      jellyfin.enable = true;
+      # jellyfin.enable = true;
       ntp.enable = true;
     };
 
@@ -27,12 +27,12 @@
       starship = {
         enable = true;
       };
-      bash.shellAliases = {
-        # cat = "bat --style=plain -P";
-        # ls = "exa --color=auto";
-        # du = "dust -b";
-        neofetch = "macchina";
-      };
+      # bash.shellAliases = {
+      #   cat = "bat --style=plain -P";
+      #   ls = "exa --color=auto";
+      #   du = "dust -b";
+      #   neofetch = "macchina";
+      # };
     };
 
     # add docker
