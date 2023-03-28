@@ -4,8 +4,8 @@
 
 ISO_IMAGE_URL=${1}
 PATH_DISK=${2:-/dev/disk2}
+ISO_FILE=find ./result -type f -exec basename {} \;
 
 curl -L "$ISO_IMAGE_URL" -o rpi.zip
 unzip rpi.zip
-
 # sudo dd if=nixos-sd-image-23.05.20230320.8276a16-aarch64-linux.img of="${PATH_DISK}" bs=1m

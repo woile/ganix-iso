@@ -49,10 +49,10 @@
       # };
 
       # disabled, see https://github.com/NixOS/nixpkgs/issues/115652#issuecomment-1033489751
-      enableRedistributableFirmware = true;
-      # firmware = [
-      #   pkgs.raspberrypiWirelessFirmware
-      # ];
+      enableRedistributableFirmware = lib.mkForce false;
+      firmware = [
+        pkgs.firmwareLinuxNonfree
+      ];
 
       bluetooth = {
         # package = pkgs.bluez;
