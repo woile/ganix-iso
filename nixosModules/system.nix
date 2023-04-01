@@ -9,26 +9,41 @@
       stateVersion = "23.05";
     };
 
+    boot = {
+      kernelParams = ["cma=256M"];
+
+      # !!! Otherwise (even if you have a Raspberry Pi 2 or 3), pick this:
+      # kernelPackages = pkgs.linux_rpi3;
+
+      # Cleanup tmp on startup
+      cleanTmpDir = true;
+
+      loader = {
+        # NixOS wants to enable GRUB by default
+        grub.enable = false;
+        # raspberryPi.enable = true;
+        raspberryPi.version = ganix.raspberry_model;
+        generic-extlinux-compatible.enable = true;
+        # generic-extlinux-compatible.populateCmd = lib.mkForce {};
+      };
+    };
     # Time
     time.timeZone = ganix.timezone;
 
     # Man
     documentation = {
-      enable = false;
+      enable = false;  # save space
     };
 
     # System packages
     environment.systemPackages = with pkgs; [
-      libraspberrypi
+      # libraspberrypi
       # ntp
       vim
       git
       wget
-      # starship
-      lm_sensors
       jq
-      # avahi
-      # docker-compose
+      docker-compose
       # bat # cat
       # exa # ls
       # ripgrep # grep
@@ -48,10 +63,11 @@
       #   priority = 50;
       # };
 
-      # disabled, see https://github.com/NixOS/nixpkgs/issues/115652#issuecomment-1033489751
-      enableRedistributableFirmware = lib.mkForce false;
+      # see https://github.com/NixOS/nixpkgs/issues/115652#issuecomment-1033489751
+      enableRedistributableFirmware = true;
       firmware = [
         pkgs.firmwareLinuxNonfree
+        pkgs.wireless-regdb
       ];
 
       bluetooth = {
@@ -64,16 +80,16 @@
 
     networking = {
       hostName = ganix.hostname;
-      useDHCP = true;
       firewall.enable = false;
       interfaces.wlan0 = {
-        # useDHCP = false;
+        useDHCP = true;
         # ipv4.addresses = [{
         #   # I used static IP over WLAN because I want to use it as local DNS resolver
         #   address = "192.168.100.4";
         #   prefixLength = 24;
         # }];
       };
+
       wireless = {
         enable = ganix.wifi_enabled;
         interfaces = [ "wlan0" ];
@@ -101,24 +117,7 @@
     #   enable = true;
     #   version = ganix.raspberry_model;
     # };
-    boot = {
-      kernelParams = ["cma=256M"];
 
-      # !!! Otherwise (even if you have a Raspberry Pi 2 or 3), pick this:
-      # kernelPackages = pkgs.linux_rpi3;
-
-      # Cleanup tmp on startup
-      cleanTmpDir = true;
-
-      loader = {
-        # NixOS wants to enable GRUB by default
-        grub.enable = false;
-        # raspberryPi.enable = true;
-        raspberryPi.version = ganix.raspberry_model;
-        # generic-extlinux-compatible.enable = lib.mkForce false;
-        # generic-extlinux-compatible.populateCmd = lib.mkForce {};
-      };
-    };
 
     i18n = {
       defaultLocale = "en_US.UTF-8";
@@ -127,7 +126,11 @@
     # Nix
     nix = {
       package = pkgs.nixUnstable;
-      extraOptions = "experimental-features = nix-command flakes";
+      extraOptions = ''
+        experimental-features = nix-command flakes
+        keep-outputs = true
+        keep-derivations = true
+      '';
     };
 
     nixpkgs.config = {
