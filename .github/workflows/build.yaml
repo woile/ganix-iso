@@ -24,14 +24,9 @@ on:
           - "4"
         required: false
       # No mechanism yet to provide multiple keys
-      ssh_key_name:
-        type: string
-        description: File name of the SSH Key
-        default: 'main.pub'
-        required: false
       ssh_key:
         type: string
-        description: Content of the SSH Key
+        description: Public SSH Key
         required: false
       wifi_enabled:
         type: boolean
@@ -50,7 +45,6 @@ env:
   INPUT_USERNAME: ${{ github.event.inputs.username }}
   INPUT_TIME_ZONE: ${{ github.event.inputs.time_zone }}
   INPUT_RASPBERRY_MODEL: ${{ github.event.inputs.raspberry_model }}
-  INPUT_SSH_KEY_NAME: ${{ github.event.inputs.ssh_key_name }}
   INPUT_SSH_KEY: ${{ github.event.inputs.ssh_key }}
   INPUT_WIFI_ENABLED: ${{ github.event.inputs.wifi_enabled }}
   INPUT_WIFI_NETWORK_NAME: ${{ github.event.inputs.wifi_network_name }}
