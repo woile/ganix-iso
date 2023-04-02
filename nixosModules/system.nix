@@ -107,6 +107,7 @@
     };
 
     sdImage.compressImage = false;
+    sdImage.imageName = "${config.sdImage.imageBaseName}-${ganix.hostname}-${config.system.nixos.label}-${pkgs.stdenv.hostPlatform.system}.img";
 
     i18n = {
       defaultLocale = "en_US.UTF-8";
