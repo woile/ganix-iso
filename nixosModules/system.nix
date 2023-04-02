@@ -91,7 +91,7 @@
       };
 
       wireless = {
-        enable = ganix.wifi_enabled;
+        enable = true;
         interfaces = [ "wlan0" ];
         networks = {
           "${ganix.wifi_network_name}" = {
