@@ -10,7 +10,7 @@ in
       users = {
         "${ganix.username}" = {
           isNormalUser = true;
-          initialPassword = "nixos";
+          # initialPassword = "nixos";
           extraGroups = [ "wheel" "networkmanager" "docker" "podman" ];
           openssh.authorizedKeys.keys = ssh_files_list ++ ganix.ssh_key;
         };

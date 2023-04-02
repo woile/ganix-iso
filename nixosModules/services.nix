@@ -7,7 +7,7 @@
         enable = true;
         openFirewall = true;
         settings.PermitRootLogin = "yes";
-        # settings.PasswordAuthentication = false;
+        settings.PasswordAuthentication = false;
       };
       transmission = {
         enable = false;
