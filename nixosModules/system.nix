@@ -26,6 +26,12 @@
         generic-extlinux-compatible.enable = true;
         # generic-extlinux-compatible.populateCmd = lib.mkForce {};
       };
+
+      # keychron fix (?)
+      extraModprobeConfig = ''
+        options hid_apple fnmode=0
+      '';
+
     };
     # Time
     time.timeZone = ganix.timezone;
@@ -91,11 +97,11 @@
       };
 
       wireless = {
-        enable = true;
+        enable = ganix.wifi_enabled;
         interfaces = [ "wlan0" ];
         networks = {
           "${ganix.wifi_network_name}" = {
-            psk = "${ganix.wifi_network_psk}";
+            pskRaw = "${ganix.wifi_network_psk}";
           };
         };
 

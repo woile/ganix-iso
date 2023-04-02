@@ -18,7 +18,7 @@ on:
         required: false
       raspberry_model:
         type: choice
-        description: "What rbp do you have?"
+        description: "Raspberry pi model"
         options:
           - "3"
           - "4"
@@ -36,14 +36,14 @@ on:
       wifi_enabled:
         type: boolean
         default: true
-        description: Should the iso have wifi configured?
+        description: Include wifi
       wifi_network_name:
         type: string
-        description: Name of the wifi connection
+        description: SSID (wifi name)
         required: false
       wifi_network_psk:
         type: string
-        description: Password of the wifi connection
+        description: PSK (wifi password)
         required: false
 env:
   INPUT_HOSTNAME: ${{ github.event.inputs.hostname }}
