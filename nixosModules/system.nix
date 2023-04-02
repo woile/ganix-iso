@@ -32,6 +32,8 @@
         options hid_apple fnmode=0
       '';
 
+      supportedFilesystems = [ "ntfs" ];
+
     };
     # Time
     time.timeZone = ganix.timezone;
@@ -43,8 +45,7 @@
 
     # System packages
     environment.systemPackages = with pkgs; [
-      # libraspberrypi
-      # ntp
+      libraspberrypi
       vim
       git
       wget
@@ -63,13 +64,6 @@
     ];
 
     hardware = {
-      # enableRedistributableFirmware = {
-      #   _type = "override";
-      #   content = false;
-      #   priority = 50;
-      # };
-
-      # see https://github.com/NixOS/nixpkgs/issues/115652#issuecomment-1033489751
       enableRedistributableFirmware = true;
       firmware = [
         pkgs.firmwareLinuxNonfree
@@ -113,17 +107,6 @@
     };
 
     sdImage.compressImage = false;
-
-    # boot.loader.grub.enable = false;
-    # # Enables the generation of /boot/extlinux/extlinux.conf
-    # # boot.loader.generic-extlinux-compatible = lib.mkDefault {enable = false; populateCmd = "";};
-    # # boot.loader.generic-extlinux-compatible.enable = lib.mkForce false;
-    # # boot.loader.generic-extlinux-compatible.populateCmd = lib.mkForce "";
-    # boot.loader.raspberryPi = {
-    #   enable = true;
-    #   version = ganix.raspberry_model;
-    # };
-
 
     i18n = {
       defaultLocale = "en_US.UTF-8";
