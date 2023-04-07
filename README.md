@@ -67,7 +67,7 @@ Burn the `.img` to the sd-card
 
 
 ```sh
-sudo dd if=nixos-sd-image-23.05.20230326.0cd51a9-aarch64-linux.img of=/dev/disk2 bs=1m status=progress
+sudo dd if=result/nixos-sd-image-23.05.20230326.0cd51a9-aarch64-linux.img of=/dev/disk2 bs=1m status=progress
 ```
 
 Remember to download the img and unzip it from the github action.

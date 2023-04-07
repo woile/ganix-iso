@@ -36,13 +36,11 @@
       radarr = {
         enable = true;
         openFirewall = true;
-        dataDir = "/media/media-store";
       };
 
       sonarr = {
         enable = true;
         openFirewall = true;
-        dataDir = "/media/media-store";
       };
 
       ntp.enable = true;
@@ -52,12 +50,13 @@
       starship = {
         enable = true;
       };
-      # bash.shellAliases = {
-      #   cat = "bat --style=plain -P";
-      #   ls = "exa --color=auto";
-      #   du = "dust -b";
-      #   neofetch = "macchina";
-      # };
+      bash.shellAliases = {
+        df = "df -h";
+        # cat = "bat --style=plain -P";
+        # ls = "exa --color=auto";
+        # du = "dust -b";
+        # neofetch = "macchina";
+      };
     };
 
     # add docker

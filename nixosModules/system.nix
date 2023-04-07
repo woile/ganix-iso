@@ -133,7 +133,7 @@
         device = "/dev/disk/by-label/NIXOS_SD";
         fsType = "ext4";
       };
-      "/media/media-store" = {
+      "/var/lib/" = {
         device = "/dev/sda2";
         fsType = "exfat";
       };
