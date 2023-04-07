@@ -133,6 +133,10 @@
         device = "/dev/disk/by-label/NIXOS_SD";
         fsType = "ext4";
       };
+      "/media/media-store" = {
+        device = "/dev/sda2";
+        fsType = "exfat";
+      };
     };
 
     # !!! Adding a swap file is optional, but strongly recommended!

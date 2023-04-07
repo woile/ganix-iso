@@ -20,7 +20,31 @@
         publish.addresses = true;
         publish.workstation = true;
       };
-      # jellyfin.enable = true;
+
+      # media server
+
+      jellyfin = {
+        enable = true;
+        openFirewall = true;
+      };
+
+      prowlarr = {
+        enable = true;
+        openFirewall = true;
+      };
+
+      radarr = {
+        enable = true;
+        openFirewall = true;
+        dataDir = "/media/media-store";
+      };
+
+      sonarr = {
+        enable = true;
+        openFirewall = true;
+        dataDir = "/media/media-store";
+      };
+
       ntp.enable = true;
     };
 

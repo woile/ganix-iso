@@ -5,8 +5,7 @@ on:
       hostname:
         type: string
         description: "Name of this machine"
-        default: raspi
-        required: false
+        required: true
       username:
         type: string
         description: "The user used to connect and operate to this machine"
