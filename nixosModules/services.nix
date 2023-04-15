@@ -9,10 +9,12 @@
         settings.PermitRootLogin = "yes";
         settings.PasswordAuthentication = false;
       };
+
       transmission = {
-        enable = false;
+        enable = true;
         openFirewall = true;
       };
+
       avahi = {
         enable = true;
         nssmdns = true;
