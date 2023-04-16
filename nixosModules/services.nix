@@ -60,7 +60,7 @@
       bash.shellAliases = {
         df = "df -h";
         ".." = "cd ..";
-        # cat = "bat --style=plain -P";
+        cat = "bat --style=plain -P";
         # ls = "exa --color=auto";
         # du = "dust -b";
         # neofetch = "macchina";

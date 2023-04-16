@@ -51,7 +51,7 @@
       wget
       jq
       docker-compose
-      # bat # cat
+      bat # cat
       # exa # ls
       # ripgrep # grep
       # fd # find
@@ -59,7 +59,7 @@
       # sd # sed
       # du-dust # du
       # bandwhich
-      # xh # http
+      xh # http
       # macchina
     ];
 
