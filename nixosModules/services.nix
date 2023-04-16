@@ -13,6 +13,8 @@
       transmission = {
         enable = true;
         openFirewall = true;
+        group = "media";
+        home = "/media/media-store/media-center/transmission/";
       };
 
       avahi = {
@@ -28,6 +30,7 @@
       jellyfin = {
         enable = true;
         openFirewall = true;
+        group = "media";
       };
 
       prowlarr = {
@@ -38,11 +41,13 @@
       radarr = {
         enable = true;
         openFirewall = true;
+        group = "media";
       };
 
       sonarr = {
         enable = true;
         openFirewall = true;
+        group = "media";
       };
 
       ntp.enable = true;
@@ -54,6 +59,7 @@
       };
       bash.shellAliases = {
         df = "df -h";
+        ".." = "cd ..";
         # cat = "bat --style=plain -P";
         # ls = "exa --color=auto";
         # du = "dust -b";

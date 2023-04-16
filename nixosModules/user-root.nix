@@ -7,11 +7,19 @@ in
 {
   config = {
     users = {
+      groups.media = { };
+
       users = {
         "${ganix.username}" = {
           isNormalUser = true;
           # initialPassword = "nixos";
-          extraGroups = [ "wheel" "networkmanager" "docker" "podman" "disk" ];
+          extraGroups = [
+            "wheel"
+            "docker"
+            "podman" # if exists
+            "disk"
+            "media" # access to media files
+          ];
           openssh.authorizedKeys.keys = ssh_files_list ++ ganix.ssh_key;
         };
       };

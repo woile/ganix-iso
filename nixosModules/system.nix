@@ -136,6 +136,13 @@
       "/media/media-store" = {
         device = "/dev/sda2";
         fsType = "exfat";
+        options = [
+          "defaults"
+          "gid=media"  # for non-root access
+          "dmask=007"
+          "fmask=117"  # not having everything be executable
+      ];
+
       };
     };
 
