@@ -61,8 +61,6 @@ jobs:
     - run: |
          DEBIAN_FRONTEND=noninteractive
          sudo apt-get update -q -y && sudo apt-get install -q -y tree qemu-system-aarch64 qemu-efi binfmt-support qemu-user-static
-    - run: nix flake check --impure
-    - run: nix flake show
     - run: nix build --impure --option system aarch64-linux --option sandbox false --extra-platforms aarch64-linux .#nixos
     - run: tree result
     - run: echo $INPUT_WIFI_ENABLED

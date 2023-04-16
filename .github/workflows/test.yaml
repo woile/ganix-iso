@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v18
+      with:
+        extra_nix_config: |
+          system-features = aarch64-linux arm-linux
+    - run: |
+         DEBIAN_FRONTEND=noninteractive
+         sudo apt-get update -q -y && sudo apt-get install -q -y tree qemu-system-aarch64 qemu-efi binfmt-support qemu-user-static
+    - run: nix flake check --impure
+    - run: nix flake show
