@@ -11,7 +11,7 @@ in
         "${ganix.username}" = {
           isNormalUser = true;
           # initialPassword = "nixos";
-          extraGroups = [ "wheel" "networkmanager" "docker" "podman" ];
+          extraGroups = [ "wheel" "networkmanager" "docker" "podman" "disk" ];
           openssh.authorizedKeys.keys = ssh_files_list ++ ganix.ssh_key;
         };
       };
