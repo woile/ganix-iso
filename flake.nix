@@ -15,9 +15,9 @@
     in
     {
       nixosModules = {
-        services = import ./nixosModules/services.nix flakeContext;
         system = import ./nixosModules/system.nix flakeContext;
         user-root = import ./nixosModules/user-root.nix flakeContext;
+        services = import ./nixosModules/services.nix flakeContext;
       };
       packages = {
         aarch64-linux = {

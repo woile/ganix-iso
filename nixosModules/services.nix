@@ -3,6 +3,8 @@
 { config, lib, pkgs, ... }: {
   config = {
     services = {
+      ntp.enable = true;
+
       openssh = {
         enable = true;
         openFirewall = true;
@@ -14,7 +16,7 @@
         enable = true;
         openFirewall = true;
         group = "media";
-        home = "/media/media-store/media-center/transmission/";
+        home = "/media/media-store/media-center/transmission";
       };
 
       avahi = {
@@ -26,13 +28,6 @@
       };
 
       # media server
-
-      jellyfin = {
-        enable = true;
-        openFirewall = true;
-        group = "media";
-      };
-
       prowlarr = {
         enable = true;
         openFirewall = true;
@@ -50,7 +45,11 @@
         group = "media";
       };
 
-      ntp.enable = true;
+      jellyfin = {
+        enable = true;
+        openFirewall = true;
+        group = "media";
+      };
     };
 
     programs = {
