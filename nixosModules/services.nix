@@ -18,7 +18,7 @@
         group = "media";
         settings = {
           download-dir = "/media/media-store/media-center/transmission/download";
-          download-dir = "/media/media-store/media-center/transmission/.incomplete";
+          incomplete-dir = "/media/media-store/media-center/transmission/.incomplete";
         };
       };
 
