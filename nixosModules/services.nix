@@ -16,7 +16,10 @@
         enable = true;
         openFirewall = true;
         group = "media";
-        home = "/media/media-store/media-center/transmission";
+        settings = {
+          download-dir = "/media/media-store/media-center/transmission/download";
+          download-dir = "/media/media-store/media-center/transmission/.incomplete";
+        };
       };
 
       avahi = {
